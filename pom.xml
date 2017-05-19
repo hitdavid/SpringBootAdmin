@@ -16,7 +16,7 @@
     </parent>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>1.7</java.version>
         <!--  依赖版本  -->
         <mybatis.version>3.3.1</mybatis.version>
         <mybatis.spring.version>1.2.4</mybatis.spring.version>
@@ -207,23 +207,30 @@
             <!--<version>4.11</version>-->
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
+
     <build>
         <finalName>spring-boot-admin</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork>
+                </configuration>
                 <dependencies>
+                    <!-- spring热部署-->
                     <dependency>
                         <groupId>org.springframework</groupId>
                         <artifactId>springloaded</artifactId>
-                        <version>1.2.5.RELEASE</version>
+                        <version>1.2.6.RELEASE</version>
                     </dependency>
                 </dependencies>
-                <configuration>
-                    <fork>true</fork><!-- 如果没有该项配置，这个devtools不会起作用，即应用不会restart -->
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
